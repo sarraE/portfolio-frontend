@@ -1,0 +1,32 @@
+import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment.development';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Message } from '../models/message';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MessageService {
+
+  readonly apiUrl = environment.apiUrl;
+  constructor(private httpClient: HttpClient) { }
+
+  getAllMessages() : Observable<Message[]>{
+    return this.httpClient.get<Message[]>(`${this.apiUrl}/getAllMessages`);
+  }
+
+  sendMessage(message : Message) : Observable<Message>{
+    return this.httpClient.post<Message> (`${this.apiUrl}/sendMessage`,message);
+  }
+
+  countNotRead() : Observable<number>{
+    return this.httpClient.get<number> (`${this.apiUrl}/countNotRead`);
+  }
+
+  markedRead(id : number) : Observable<void> {
+    return this.httpClient.put<void> (`${this.apiUrl}/markedRead/${id}`, null);
+  }
+
+  
+}

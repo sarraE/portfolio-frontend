@@ -1,0 +1,26 @@
+<nav [class.scrolled]="scrolled">
+  <div class="nav-container">
+
+    <div class="logo" (click)="scrollTo('hero')">
+      Sarra <em>Elkamel</em>
+    </div>
+
+    <ul class="nav-links" [class.open]="menuOpen">
+      <li (click)="scrollTo('hero')">Home</li>
+      <li (click)="scrollTo('projets')">Projects</li>
+      <li (click)="scrollTo('stats')">Stats</li>
+      <li (click)="scrollTo('contact')">Contact</li>
+      <li class="nav-cta" (click)="scrollTo('contact')">
+        Contact Me
+      </li>
+    </ul>
+
+    <button class="burger" (click)="menuOpen = !menuOpen"
+            [class.open]="menuOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+</nav>

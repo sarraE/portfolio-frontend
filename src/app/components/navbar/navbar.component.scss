@@ -1,0 +1,101 @@
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  background: rgba(250, 247, 242, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid transparent;
+  transition: all 0.3s ease;
+
+  &.scrolled {
+    padding: 14px 0;
+    border-bottom-color: var(--border);
+    box-shadow: 0 4px 24px rgba(232, 130, 106, 0.06);
+  }
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--txt);
+  cursor: pointer;
+  transition: opacity 0.2s;
+  em { color: var(--p); font-style: italic; }
+  &:hover { opacity: 0.8; }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+
+  li {
+    font-size: 13px;
+    color: var(--txt2);
+    cursor: pointer;
+    transition: color 0.2s;
+    letter-spacing: 0.03em;
+    &:hover { color: var(--p); }
+  }
+
+  .nav-cta {
+    padding: 9px 22px;
+    background: var(--p);
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.15s;
+    &:hover { background: var(--p3); transform: translateY(-1px); }
+  }
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+
+  span {
+    display: block;
+    width: 24px; height: 1.5px;
+    background: var(--txt);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+  }
+
+  &.open {
+    span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  }
+}
+
+@media (max-width: 768px) {
+  .burger { display: flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    flex-direction: column;
+    background: rgba(250, 247, 242, 0.98);
+    padding: 24px 48px;
+    gap: 20px;
+    border-bottom: 0.5px solid var(--border);
+    &.open { display: flex; }
+  }
+}

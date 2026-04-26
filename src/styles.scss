@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --p: #E8826A;
+  --p2: #D4A574;
+  --p3: #C96B52;
+  --bg: #FAF7F2;
+  --bg2: #F5F0E8;
+  --bg3: #EDE8DF;
+  --txt: #1C1917;
+  --txt2: #6B6560;
+  --txt3: #A09990;
+  --border: rgba(232, 130, 106, 0.15);
+}
+
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+html { scroll-behavior: smooth; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--p); border-radius: 3px; }
