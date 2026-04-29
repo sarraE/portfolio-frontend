@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class StatService {
 
-  readonly apiUrl = environment.apiUrl
+  readonly apiUrl = 'https://portfolio-backend-production-0ef6.up.railway.app';
   constructor(private httpClient : HttpClient) { }
 
   recordVisit(page : string) : Observable<void>{

@@ -9,7 +9,7 @@ import { Message } from '../models/message';
 })
 export class MessageService {
 
-  readonly apiUrl = environment.apiUrl;
+  readonly apiUrl = 'https://portfolio-backend-production-0ef6.up.railway.app';
   constructor(private httpClient: HttpClient) { }
 
   getAllMessages() : Observable<Message[]>{
