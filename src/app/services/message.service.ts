@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, timeout } from 'rxjs';
 import { Message } from '../models/message';
 
 @Injectable({
@@ -17,7 +17,9 @@ export class MessageService {
   }
 
   sendMessage(message : Message) : Observable<Message>{
-    return this.httpClient.post<Message> (`${this.apiUrl}/sendMessage`,message);
+    return this.httpClient.post<Message> (`${this.apiUrl}/sendMessage`,message).pipe(
+  timeout(30000)
+);
   }
 
   countNotRead() : Observable<number>{
