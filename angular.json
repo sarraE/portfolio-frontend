@@ -94,12 +94,8 @@
             "inlineStyleLanguage": "scss",
            "assets": [
               "src/favicon.ico",
-              "src/assets",
-            {
-                 "glob": "google79a35cadc6d5057b.html",
-                    "input": "src",
-                   "output": "/"
-                      }
+              "src/assets"
+           
                  ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
