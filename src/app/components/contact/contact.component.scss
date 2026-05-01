@@ -426,3 +426,9 @@
   .contact-container { padding: 0 24px; }
   .form-row { grid-template-columns: 1fr; }
 }
+.error-msg {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}

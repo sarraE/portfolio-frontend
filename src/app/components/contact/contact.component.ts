@@ -18,6 +18,7 @@ export class ContactComponent implements OnInit {
   notReadCount: number = 0;
   messageSent: boolean = false;
   isAdmin = localStorage.getItem('portfolio_admin') === 'admin123';
+  submitted = false;
 
   constructor(private messageService: MessageService) {}
 
@@ -34,18 +35,34 @@ export class ContactComponent implements OnInit {
       error: (err) => console.error('Erreur chargement messages', err)
     });
   }
-
+isValidEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
   sendMessage() {
-    this.messageService.sendMessage(this.message as Message).subscribe({
-      next: () => {
-        this.message = {};
-        this.messageSent = true;
-        setTimeout(() => this.messageSent = false, 4000);
-        if (this.isAdmin) this.getAllMessages();
-      },
-      error: (err) => console.error('Erreur envoi', err)
-    });
+  this.submitted = true;
+
+  if (
+    !this.message.name ||
+    !this.message.email ||
+    !this.isValidEmail(this.message.email) ||
+    !this.message.subject ||
+    !this.message.content
+  ) {
+    return;
   }
+
+  this.messageService.sendMessage(this.message as Message).subscribe({
+    next: () => {
+      this.message = {};
+      this.submitted = false;
+      this.messageSent = true;
+      setTimeout(() => this.messageSent = false, 4000);
+      if (this.isAdmin) this.getAllMessages();
+    },
+    error: (err) => console.error('Erreur envoi', err)
+  });
+}
 
   countNotRead() {
     this.messageService.countNotRead().subscribe({

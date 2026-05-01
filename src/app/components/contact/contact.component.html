@@ -18,44 +18,64 @@
 
       <div class="contact-form-side">
         <div class="form-card">
-          <div class="form-row">
-            <div class="form-group">
-              <label>Name</label>
-              <input type="text" [(ngModel)]="message.name"
-                     placeholder="Your name"/>
-            </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" [(ngModel)]="message.email"
-                     placeholder="Email address"/>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Subject</label>
-            <input type="text" [(ngModel)]="message.subject"
-                   placeholder="Ex: Web application development"/>
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea [(ngModel)]="message.content" rows="5"
-                      placeholder="Describe your project..."></textarea>
-          </div>
-          <button class="btn-send" (click)="sendMessage()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2">
-              <line x1="22" y1="2" x2="11" y2="13"/>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-            </svg>
-            Send message
-          </button>
-          <div class="success-msg" *ngIf="messageSent">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2">
-              <polyline points="20 6 9 17 4 12"/>
-            </svg>
-            Message sent! I'll get back to you within 24 hours.
-          </div>
-        </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" [(ngModel)]="message.name"
+             placeholder="Your name"/>
+      <small class="error-msg" *ngIf="submitted && !message.name">
+        Name is required
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" [(ngModel)]="message.email"
+             placeholder="Email address"/>
+      <small class="error-msg" *ngIf="submitted && !message.email">
+        Email is required
+      </small>
+      <small class="error-msg" *ngIf="submitted && message.email && !isValidEmail(message.email)">
+        Invalid email format
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Subject</label>
+    <input type="text" [(ngModel)]="message.subject"
+           placeholder="Ex: Web application development"/>
+    <small class="error-msg" *ngIf="submitted && !message.subject">
+      Subject is required
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label>Message</label>
+    <textarea [(ngModel)]="message.content" rows="5"
+              placeholder="Describe your project..."></textarea>
+    <small class="error-msg" *ngIf="submitted && !message.content">
+      Message is required
+    </small>
+  </div>
+
+  <button class="btn-send" (click)="sendMessage()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2">
+      <line x1="22" y1="2" x2="11" y2="13"/>
+      <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+    </svg>
+    Send message
+  </button>
+
+  <div class="success-msg" *ngIf="messageSent">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
+    Message sent! I'll get back to you within 24 hours.
+  </div>
+</div>
 
         <div class="contact-info">
           <div class="info-item">
