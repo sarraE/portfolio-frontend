@@ -92,10 +92,15 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
+           "assets": [
               "src/favicon.ico",
-              "src/assets"
-            ],
+              "src/assets",
+            {
+                 "glob": "google79a35cadc6d5057b.html",
+                    "input": "src",
+                   "output": "/"
+                      }
+                 ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
